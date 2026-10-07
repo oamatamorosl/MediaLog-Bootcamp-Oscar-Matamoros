@@ -3,10 +3,11 @@ import { MediaTypeBadge } from './media-type-badge'
 
 type MediaCardProps = {
   data: MediaItem
+  onSelect: (mediaId: number) => void
 }
 
 export function MediaCard(props: MediaCardProps) {
-  const { data } = props
+  const { data, onSelect } = props
   return (
     <article className="media-card">
       {data.posterUrl ? (
@@ -25,6 +26,9 @@ export function MediaCard(props: MediaCardProps) {
         </p>
         <h3>{data.title}</h3>
         <p>{data.description ?? 'Sin descripción disponible'}</p>
+        <button type="button" onClick={() => onSelect(data.id)}>
+          Ver detalle
+        </button>
       </div>
     </article>
   )
